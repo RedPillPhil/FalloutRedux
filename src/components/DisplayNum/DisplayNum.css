@@ -1,0 +1,7 @@
+.displayBlock {
+  font-size: 30px;
+  color: #fff;
+  width: 50%;
+  margin: 0 auto;
+  word-break: break-all;
+}

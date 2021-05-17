@@ -1,0 +1,15 @@
+.inputNum {
+  font-size: 30px;
+  height: 50px;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.inputBlock {
+  padding-top: 10px;
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+}
