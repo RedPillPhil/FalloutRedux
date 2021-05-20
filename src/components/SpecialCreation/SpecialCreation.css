@@ -1,0 +1,10 @@
+.vaultboyImage {
+  padding: 50px;
+  width: 200px;
+}
+
+.falloutSpecial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

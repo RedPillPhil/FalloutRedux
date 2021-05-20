@@ -28,16 +28,6 @@ module.exports = {
         loader: "babel-loader",
         options: { presets: ["@babel/preset-react", "@babel/preset-env"] },
       },
-      //   {
-      //     test: /\.jsx$/,
-      //     exclude: /node_modules/,
-      //     loader: {
-      //       loader: "babel-loader",
-      //       options: {
-      //         presets: ["@babel/preset-react", "@babel/preset-env"],
-      //       },
-      //     },
-      //   },
     ],
   },
 };
