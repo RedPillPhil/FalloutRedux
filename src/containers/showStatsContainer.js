@@ -3,7 +3,7 @@ import SpecialOutput from "../components/SpecialCreation/SpecialOutput/SpecialOu
 
 const mapStateToProps = (state) => {
   return {
-    stats: state,
+    stats: state.changeStat,
   };
 };
 

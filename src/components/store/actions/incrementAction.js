@@ -1,7 +1,10 @@
 const INCREMENT = "INCREMENT";
 
-const incrementStat = (stat) => {
+const incrementStat = (statName) => {
   return {
-    stat: stat + 1,
+    type: INCREMENT,
+    payload: statName,
   };
 };
+
+export default incrementStat;

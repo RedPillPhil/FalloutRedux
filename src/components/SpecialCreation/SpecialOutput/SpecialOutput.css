@@ -1,0 +1,17 @@
+.stats-list {
+  font-family: "Monofonto";
+  font-size: 35px;
+  list-style-type: none;
+  color: rgb(26, 255, 128);
+}
+
+.stats-display {
+  position: relative;
+  font-family: "Monofonto";
+  font-size: 35px;
+  color: rgb(26, 255, 128);
+}
+
+.remaining-points {
+  position: absolute;
+}

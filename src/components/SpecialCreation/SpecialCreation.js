@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SpecialInput from "./SpecialInput/SpecialInput";
+import SpecialInputConnected from "../../containers/changeStatContainer";
 import SpecialOutputConnected from "../../containers/showStatsContainer";
 
 import pic from "../../pics/vaultboy.png";
@@ -20,7 +20,7 @@ class SpecialCreation extends Component {
     return (
       <section className="falloutSpecial">
         <img className="vaultboyImage" src={pic} />
-        <SpecialInput />
+        <SpecialInputConnected />
         <SpecialOutputConnected />
       </section>
     );
