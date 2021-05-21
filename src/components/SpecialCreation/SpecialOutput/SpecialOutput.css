@@ -13,5 +13,7 @@
 }
 
 .remaining-points {
+  left: -275px;
+  width: 400px;
   position: absolute;
 }

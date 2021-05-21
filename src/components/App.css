@@ -3,3 +3,13 @@ body {
   height: 100vh;
   background: linear-gradient(#333, #000);
 }
+.vaultboyImage {
+  padding: 50px;
+  width: 200px;
+}
+
+.falloutSpecial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

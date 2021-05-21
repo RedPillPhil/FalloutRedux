@@ -1,0 +1,12 @@
+.description {
+  width: 50%;
+  margin: 0 auto;
+  color: rgb(26, 255, 128);
+  font-family: "Monofonto";
+  font-size: 35px;
+}
+
+.description img {
+  display: block;
+  margin: 0 auto;
+}

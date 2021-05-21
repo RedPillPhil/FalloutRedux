@@ -1,5 +1,6 @@
 .specialInput {
   color: rgb(26, 255, 128);
+  position: relative;
 }
 
 .specialInput-list {
@@ -21,7 +22,7 @@
   width: 25px;
 }
 
-.specialInput-list li div {
+.stat-link {
   padding: 0 10px;
 }
 
@@ -34,4 +35,25 @@ button {
 
 button:active {
   background-color: rgb(22, 187, 96);
+}
+
+.save-character-button {
+  bottom: -100px;
+  left: 85px;
+  position: absolute;
+  height: 30px;
+  transition: height 0.5s;
+}
+
+.save-character-button:hover {
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(26, 255, 128);
+}
+
+img {
+  width: 500px;
 }

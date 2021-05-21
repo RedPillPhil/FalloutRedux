@@ -1,8 +1,8 @@
 import React from "react";
 import "./SpecialInput.css";
+import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 
 const SpecialInput = (props) => {
-  console.log(props);
   return (
     <article className="specialInput">
       <ul className="specialInput-list">
@@ -14,7 +14,15 @@ const SpecialInput = (props) => {
           >
             -
           </button>
-          <div>STRENGTH</div>
+          <Link
+            to="/strength"
+            onClick={() => {
+              props.getStatPage(0);
+            }}
+            className="stat-link"
+          >
+            STRENGTH
+          </Link>
           <button
             onClick={() => {
               props.increment("strength");
@@ -31,7 +39,16 @@ const SpecialInput = (props) => {
           >
             -
           </button>
-          <div>PERCEPTION</div>
+
+          <Link
+            to="/perception"
+            onClick={() => {
+              props.getStatPage(1);
+            }}
+            className="stat-link"
+          >
+            PERCEPTION
+          </Link>
           <button
             onClick={() => {
               props.increment("perception");
@@ -48,7 +65,16 @@ const SpecialInput = (props) => {
           >
             -
           </button>
-          <div>ENDURANCE</div>
+
+          <Link
+            to="/perception"
+            onClick={() => {
+              props.getStatPage(2);
+            }}
+            className="stat-link"
+          >
+            ENDURANCE
+          </Link>
           <button
             onClick={() => {
               props.increment("endurance");
@@ -65,7 +91,16 @@ const SpecialInput = (props) => {
           >
             -
           </button>
-          <div>CHARISMA</div>
+
+          <Link
+            to="/perception"
+            onClick={() => {
+              props.getStatPage(3);
+            }}
+            className="stat-link"
+          >
+            CHARISMA
+          </Link>
           <button
             onClick={() => {
               props.increment("charisma");
@@ -82,7 +117,16 @@ const SpecialInput = (props) => {
           >
             -
           </button>
-          <div>INTELLIGENCE</div>
+
+          <Link
+            to="/perception"
+            onClick={() => {
+              props.getStatPage(4);
+            }}
+            className="stat-link"
+          >
+            INTELLIGENCE
+          </Link>
           <button
             onClick={() => {
               props.increment("intelligence");
@@ -99,7 +143,16 @@ const SpecialInput = (props) => {
           >
             -
           </button>
-          <div>AGILITY</div>
+
+          <Link
+            to="/perception"
+            onClick={() => {
+              props.getStatPage(5);
+            }}
+            className="stat-link"
+          >
+            AGILITY
+          </Link>
           <button
             onClick={() => {
               props.increment("agility");
@@ -116,7 +169,16 @@ const SpecialInput = (props) => {
           >
             -
           </button>
-          <div>LUCK</div>
+
+          <Link
+            to="/perception"
+            onClick={() => {
+              props.getStatPage(6);
+            }}
+            className="stat-link"
+          >
+            LUCK
+          </Link>
           <button
             onClick={() => {
               props.increment("luck");
@@ -126,6 +188,9 @@ const SpecialInput = (props) => {
           </button>
         </li>
       </ul>
+      <button className="save-character-button" onClick={props.saveStats}>
+        SAVE CHARACTER
+      </button>
     </article>
   );
 };
