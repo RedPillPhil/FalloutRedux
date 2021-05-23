@@ -10,3 +10,15 @@
   display: block;
   margin: 0 auto;
 }
+
+.description-flexbox {
+  display: flex;
+  color: rgb(26, 255, 128);
+  font-family: "Monofonto";
+  font-size: 35px;
+  transition: 0.2s;
+}
+
+.link-home:hover {
+  color: rgb(31, 197, 106);
+}

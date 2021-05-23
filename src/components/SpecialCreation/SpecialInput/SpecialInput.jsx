@@ -1,6 +1,6 @@
 import React from "react";
 import "./SpecialInput.css";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SpecialInput = (props) => {
   return (
