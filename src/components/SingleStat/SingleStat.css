@@ -22,3 +22,19 @@
 .link-home:hover {
   color: rgb(31, 197, 106);
 }
+
+.change-stat {
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.change-stat button {
+  width: 40px;
+  height: 40px;
+}
+
+.points {
+  padding: 0 10px;
+}

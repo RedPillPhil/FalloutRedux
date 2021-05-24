@@ -8,3 +8,8 @@ const decrementStat = (statName) => {
 };
 
 export default decrementStat;
+
+const ACTION_TYPES = {
+DECREMENT: 'DECREMENT',
+INCREMENT: 'INCREMENT'
+}

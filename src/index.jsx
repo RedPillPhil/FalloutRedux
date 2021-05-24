@@ -2,9 +2,8 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import App from "./components/App.jsx";
-import store from "./components/store/store";
+import store from "./store/store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SingleStat from "./components/SpecialCreation/SpecialInput/SingleStat/SingleStat.jsx";
 
 render(
   <Provider store={store}>
