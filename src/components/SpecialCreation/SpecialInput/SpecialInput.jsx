@@ -3,7 +3,19 @@ import "./SpecialInput.css";
 import { Link } from "react-router-dom";
 import { statsArray } from "../../../constants/resourses/stats.jsx";
 
-const SpecialInput = ({ increment, decrement, saveStats, getStatPage }) => {
+import incrementStat from "../../../store/actions/incrementAction";
+import decrementStat from "../../../store/actions/decrementAction";
+import saveCharacter from "../../../store/actions/saveCharacterAction";
+
+const SpecialInput = ({
+  increment,
+  decrement,
+  saveStats,
+  getStatPage,
+  state,
+}) => {
+  console.log(state);
+
   return (
     <article className="specialInput">
       <ul className="specialInput-list">
@@ -37,9 +49,11 @@ const SpecialInput = ({ increment, decrement, saveStats, getStatPage }) => {
           );
         })}
       </ul>
-      <button className="save-character-button" onClick={saveStats}>
-        SAVE CHARACTER
-      </button>
+      <Link to="/character">
+        <button className="save-character-button" onClick={saveCharacter}>
+          SAVE CHARACTER
+        </button>
+      </Link>
     </article>
   );
 };

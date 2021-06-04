@@ -1,5 +1,6 @@
 import React from "react";
 import "./SpecialOutput.css";
+let renderCount = 0;
 
 const SpecialOutput = (props) => {
   return (
