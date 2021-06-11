@@ -12,7 +12,7 @@ const CreatedCharacter = () => {
     if (percent < 100) {
       timeout = setTimeout(() => {
         setPercent((prevState) => prevState + Math.ceil(Math.random() * 30));
-      }, Math.ceil(Math.random() * 1000));
+      }, Math.ceil(Math.random() * 100));
     } else {
       clearTimeout(timeout);
       setPercent(100);

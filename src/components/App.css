@@ -2,6 +2,7 @@ body {
   margin: 0;
   height: 100vh;
   background: linear-gradient(#333, #000);
+  overflow: hidden;
 }
 .vaultboyImage {
   padding: 50px;
