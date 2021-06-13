@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar.jsx";
-import Character from "./Character/Character.jsx";
+import Character from "./Game/Game.jsx";
 
 import "./CreatedCharacter.scss";
 

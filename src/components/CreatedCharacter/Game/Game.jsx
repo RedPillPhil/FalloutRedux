@@ -1,10 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { connect } from "react-redux";
+import getQuest from "../../../store/actions/getQuest.jsx";
 import head from "../../../pics/head.png";
 import find from "../../../pics/searchicon.png";
 
-import "./Character.scss";
+import "./Game.scss";
 
-const Character = () => {
+const Game = ({ state, getQuest }) => {
+  console.log(state.quests[0]);
   const [positionX, setPositionX] = useState(130);
   const [positionY, setPositionY] = useState(-15);
 
@@ -35,13 +38,23 @@ const Character = () => {
     [positionX, positionY]
   );
 
+  useEffect(() => {
+    if (
+      state.quests[0].x - 830 < positionX &&
+      state.quests[0].x - 760 > positionX &&
+      (state.quests[0].y - 525) * -1 > positionY &&
+      (state.quests[0].y - 470) * -1 < positionY
+    ) {
+      getQuest(0);
+    }
+  }, []);
   if (
-    points.one.left - 830 < positionX &&
-    points.one.left - 760 > positionX &&
-    (points.one.top - 525) * -1 > positionY &&
-    (points.one.top - 470) * -1 < positionY
+    state.quests[0].x - 830 < positionX &&
+    state.quests[0].x - 760 > positionX &&
+    (state.quests[0].y - 525) * -1 > positionY &&
+    (state.quests[0].y - 470) * -1 < positionY
   ) {
-    console.log("Quest added");
+    getQuest(0);
   }
   return (
     <main
@@ -72,4 +85,18 @@ const Character = () => {
   );
 };
 
-export default Character;
+const mapStateToProps = (state) => {
+  return {
+    state: state.changeStat,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getQuest: (id) => {
+      dispatch(getQuest(id));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

@@ -7,6 +7,7 @@ const initialState = {
   agility: 5,
   luck: 5,
   remainingPoints: 5,
+  quests: [{ x: 910, y: 730, isTaken: false }],
 };
 
 const changeStat = (state = initialState, action) => {
@@ -33,7 +34,19 @@ const changeStat = (state = initialState, action) => {
       if (state.remainingPoints == 0) {
         return state;
       }
-      alert(`You have ${state.remainingPoints} unspent stats`);
+    case "GET_QUEST":
+      return {
+        ...state,
+        quests: [
+          ...state.quests,
+          state.quests.filter((quest, index) => {
+            if (index === action.payload) {
+              return (quest.isTaken = true);
+            }
+          }),
+        ],
+      };
+
     default:
       return state;
   }
