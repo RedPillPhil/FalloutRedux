@@ -7,7 +7,7 @@ const initialState = {
   agility: 5,
   luck: 5,
   remainingPoints: 5,
-  quests: [{ x: 910, y: 730, isTaken: false }],
+  quests: [{ x: 910, y: 730, isOver: false }],
 };
 
 const changeStat = (state = initialState, action) => {
@@ -31,17 +31,28 @@ const changeStat = (state = initialState, action) => {
         remainingPoints: state.remainingPoints + 1,
       };
     case "SAVE_CHARACTER":
-      if (state.remainingPoints == 0) {
-        return state;
-      }
-    case "GET_QUEST":
+      return state;
+    case "SET_OVER":
       return {
         ...state,
         quests: [
           ...state.quests,
           state.quests.filter((quest, index) => {
             if (index === action.payload) {
-              return (quest.isTaken = true);
+              return (quest.isOver = true);
+            }
+          }),
+        ],
+      };
+
+    case "UNSET_OVER":
+      return {
+        ...state,
+        quests: [
+          ...state.quests,
+          state.quests.filter((quest, index) => {
+            if (index === action.payload) {
+              return (quest.isOver = false);
             }
           }),
         ],

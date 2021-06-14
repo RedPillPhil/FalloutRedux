@@ -1,22 +1,27 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { connect } from "react-redux";
-import getQuest from "../../../store/actions/getQuest.jsx";
+import setOver from "../../../store/actions/setOver.jsx";
+import unsetOver from "../../../store/actions/unsetOver.jsx";
 import head from "../../../pics/head.png";
 import find from "../../../pics/searchicon.png";
 
 import "./Game.scss";
 
-const Game = ({ state, getQuest }) => {
+const Game = React.memo(({ state, setOver }) => {
   console.log(state.quests[0]);
   const [positionX, setPositionX] = useState(130);
   const [positionY, setPositionY] = useState(-15);
 
-  const [points, setPoints] = useState({
-    one: {
-      left: 910,
-      top: 730,
-    },
-  });
+  useEffect(() => {
+    if (localStorage.length > 0) {
+      setPositionX(JSON.parse(localStorage.getItem(0))[0]);
+      setPositionY(JSON.parse(localStorage.getItem(0))[1]);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(0, JSON.stringify([positionX, positionY]));
+  }, [positionY, positionX]);
 
   const moveCharacter = (e) => {
     if (e.keyCode === 39) {
@@ -45,17 +50,12 @@ const Game = ({ state, getQuest }) => {
       (state.quests[0].y - 525) * -1 > positionY &&
       (state.quests[0].y - 470) * -1 < positionY
     ) {
-      getQuest(0);
+      setOver(0);
+    } else {
+      unsetOver(0);
     }
-  }, []);
-  if (
-    state.quests[0].x - 830 < positionX &&
-    state.quests[0].x - 760 > positionX &&
-    (state.quests[0].y - 525) * -1 > positionY &&
-    (state.quests[0].y - 470) * -1 < positionY
-  ) {
-    getQuest(0);
-  }
+  }, [positionX, positionY]);
+
   return (
     <main
       className="your-character"
@@ -77,13 +77,13 @@ const Game = ({ state, getQuest }) => {
         className="point"
         src={find}
         style={{
-          left: points.one.left + positionX + "px",
-          top: points.one.top + positionY + "px",
+          left: state.quests[0].x + positionX + "px",
+          top: state.quests[0].y + positionY + "px",
         }}
       />
     </main>
   );
-};
+});
 
 const mapStateToProps = (state) => {
   return {
@@ -93,8 +93,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getQuest: (id) => {
-      dispatch(getQuest(id));
+    setOver: (id) => {
+      dispatch(setOver(id));
+    },
+    unsetOver: (id) => {
+      dispatch(unsetOver(id));
     },
   };
 };
