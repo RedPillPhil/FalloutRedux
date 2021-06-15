@@ -6,11 +6,12 @@ import head from "../../../pics/head.png";
 import find from "../../../pics/searchicon.png";
 
 import "./Game.scss";
+import PopupWindow from "./PopupWindow/PopupWindow.jsx";
 
-const Game = React.memo(({ state, setOver }) => {
-  console.log(state.quests[0]);
+const Game = React.memo(({ state, setOver, unsetOver }) => {
   const [positionX, setPositionX] = useState(130);
   const [positionY, setPositionY] = useState(-15);
+  const [shown, setShown] = useState(false);
 
   useEffect(() => {
     if (localStorage.length > 0) {
@@ -21,20 +22,32 @@ const Game = React.memo(({ state, setOver }) => {
 
   useEffect(() => {
     localStorage.setItem(0, JSON.stringify([positionX, positionY]));
-  }, [positionY, positionX]);
+    if (
+      state.quests[0].x - 830 < positionX &&
+      state.quests[0].x - 760 > positionX &&
+      (state.quests[0].y - 525) * -1 > positionY &&
+      (state.quests[0].y - 470) * -1 < positionY
+    ) {
+      setOver();
+    } else {
+      unsetOver();
+    }
+  }, [positionX, positionY]);
 
   const moveCharacter = (e) => {
-    if (e.keyCode === 39) {
-      setPositionX((prevState) => prevState - 15);
-    }
-    if (e.keyCode === 37) {
-      setPositionX((prevState) => prevState + 15);
-    }
-    if (e.keyCode === 40) {
-      setPositionY((prevState) => prevState - 15);
-    }
-    if (e.keyCode === 38) {
-      setPositionY((prevState) => prevState + 15);
+    if (shown == false) {
+      if (e.keyCode === 39) {
+        setPositionX((prevState) => prevState - 15);
+      }
+      if (e.keyCode === 37) {
+        setPositionX((prevState) => prevState + 15);
+      }
+      if (e.keyCode === 40) {
+        setPositionY((prevState) => prevState - 15);
+      }
+      if (e.keyCode === 38) {
+        setPositionY((prevState) => prevState + 15);
+      }
     }
   };
 
@@ -43,24 +56,20 @@ const Game = React.memo(({ state, setOver }) => {
     [positionX, positionY]
   );
 
-  useEffect(() => {
-    if (
-      state.quests[0].x - 830 < positionX &&
-      state.quests[0].x - 760 > positionX &&
-      (state.quests[0].y - 525) * -1 > positionY &&
-      (state.quests[0].y - 470) * -1 < positionY
-    ) {
-      setOver(0);
+  const toggleWindow = () => {
+    setShown((prevState) => (prevState = !prevState));
+    if (!shown) {
+      unsetOver();
     } else {
-      unsetOver(0);
+      setOver();
     }
-  }, [positionX, positionY]);
+  };
 
   return (
     <main
-      className="your-character"
+      className='your-character'
       onKeyDown={moveCharacterMemo}
-      tabIndex="0"
+      tabIndex='0'
       style={{
         backgroundPositionX: positionX + "px",
         backgroundPositionY: positionY + "px",
@@ -68,19 +77,27 @@ const Game = React.memo(({ state, setOver }) => {
     >
       <img
         src={head}
-        className="head"
+        className='head'
         style={{
           width: "30px",
         }}
       />
       <img
-        className="point"
+        className='point'
         src={find}
         style={{
           left: state.quests[0].x + positionX + "px",
           top: state.quests[0].y + positionY + "px",
         }}
       />
+      {state.isOver ? (
+        <button className='investigate-button' onClick={toggleWindow}>
+          INVESTIGATE
+        </button>
+      ) : (
+        <></>
+      )}
+      <PopupWindow isShown={shown} toggleWindow={toggleWindow} />
     </main>
   );
 });
@@ -93,11 +110,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setOver: (id) => {
-      dispatch(setOver(id));
+    setOver: () => {
+      dispatch(setOver());
     },
-    unsetOver: (id) => {
-      dispatch(unsetOver(id));
+    unsetOver: () => {
+      dispatch(unsetOver());
     },
   };
 };

@@ -1,9 +1,8 @@
 const UNSET_OVER = "UNSET_OVER";
 
-const unsetOver = (id) => {
+const unsetOver = () => {
   return {
     type: UNSET_OVER,
-    payload: id,
   };
 };
 

@@ -1,9 +1,8 @@
 const SET_OVER = "SET_OVER";
 
-const setOver = (id) => {
+const setOver = () => {
   return {
     type: SET_OVER,
-    payload: id,
   };
 };
 
