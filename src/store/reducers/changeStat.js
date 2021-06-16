@@ -1,4 +1,5 @@
 const initialState = {
+  characterName: "",
   strength: 5,
   perception: 5,
   endurance: 5,
@@ -9,6 +10,7 @@ const initialState = {
   remainingPoints: 5,
   quests: [{ x: 910, y: 730 }],
   isOver: false,
+  injuries: "None",
 };
 
 const changeStat = (state = initialState, action) => {
@@ -32,7 +34,11 @@ const changeStat = (state = initialState, action) => {
         remainingPoints: state.remainingPoints + 1,
       };
     case "SAVE_CHARACTER":
-      return state;
+      console.log(action.payload);
+      return {
+        ...state,
+        characterName: action.payload,
+      };
     case "SET_OVER":
       return { ...state, isOver: true };
     case "UNSET_OVER":

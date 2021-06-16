@@ -55,3 +55,24 @@
     background: rgb(30, 141, 80);
   }
 }
+
+.pipboy-button {
+  position: absolute;
+  cursor: pointer;
+  left: 3%;
+  top: 1%;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(30, 141, 80);
+  border: 2px solid rgb(43, 104, 71);
+  &:active {
+    background-color: rgb(43, 104, 71);
+    border: 2px solid rgb(38, 68, 52);
+  }
+  img {
+    padding-top: 6px;
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+  }
+}
