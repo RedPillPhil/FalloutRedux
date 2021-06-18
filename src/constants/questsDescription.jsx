@@ -75,7 +75,7 @@ const questsDescription = {
         },
       ],
       loot: {
-        id: 1,
+        id: "steampack",
         amount: 2,
       },
     },

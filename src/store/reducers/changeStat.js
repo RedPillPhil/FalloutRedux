@@ -11,6 +11,10 @@ const initialState = {
   quests: [{ x: 910, y: 730 }],
   isOver: false,
   injuries: "None",
+  inventory: {
+    steampack: 2,
+    ammo: 200,
+  },
 };
 
 const changeStat = (state = initialState, action) => {
@@ -62,6 +66,19 @@ const changeStat = (state = initialState, action) => {
       } else {
         return {
           ...state,
+        };
+      }
+    case "GET_LOOT":
+      if (state.inventory.hasOwnProperty(action.id)) {
+        let summedAmount = state.inventory[action.id] + action.amount;
+        console.log(state.inventory);
+        console.log(summedAmount);
+        return {
+          ...state,
+          inventory: {
+            ...state.inventory,
+            [action.id]: summedAmount,
+          },
         };
       }
     default:

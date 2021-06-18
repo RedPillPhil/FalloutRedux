@@ -1,8 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./Inventory.scss";
 
-const Inventory = () => {
-  return <main className="inventory"></main>;
+const Inventory = ({ inventory }) => {
+  const convertedInventory = Object.entries(inventory);
+  console.log(convertedInventory);
+  return (
+    <main className="inventory">
+      {convertedInventory.map((item, index) => {
+        return (
+          <div key={index}>
+            {item[1]}
+            <p>{item[0]}</p>
+          </div>
+        );
+      })}
+    </main>
+  );
 };
 
-export default Inventory;
+const mapStateToProps = (state) => {
+  return {
+    inventory: state.changeStat.inventory,
+  };
+};
+
+export default connect(mapStateToProps)(Inventory);

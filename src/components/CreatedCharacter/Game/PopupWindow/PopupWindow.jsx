@@ -3,13 +3,31 @@ import { connect } from "react-redux";
 import "./PopupWindow.scss";
 import questsDescription from "../../../../constants/questsDescription.jsx";
 import loadGame from "../../../../store/actions/loadGame.jsx";
+import getLoot from "../../../../store/actions/getLoot.jsx";
 
-const PopupWindow = ({ investigateIsShown, toggleWindow, state }) => {
+const PopupWindow = ({ investigateIsShown, toggleWindow, state, getLoot }) => {
   const [windowNumber, setWindowNumber] = useState(1);
 
   const requirementAccess = (object, prop) => {
     return object[prop];
   };
+
+  const mapLoot = () => {
+    let roomLoot = requirementAccess(
+      questsDescription.rookHouse,
+      windowNumber
+    ).loot;
+    if (
+      requirementAccess(questsDescription.rookHouse, windowNumber).loot !=
+      undefined
+    ) {
+      getLoot(roomLoot.id, roomLoot.amount);
+    }
+  };
+
+  useEffect(() => {
+    mapLoot();
+  }, [windowNumber]);
   return (
     <main
       className="popup-window"
@@ -77,6 +95,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     unsetOver: () => {
       dispatch(unsetOver());
+    },
+    getLoot: (id, amount) => {
+      dispatch(getLoot(id, amount));
     },
   };
 };
