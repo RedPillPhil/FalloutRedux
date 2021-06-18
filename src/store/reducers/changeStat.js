@@ -34,7 +34,6 @@ const changeStat = (state = initialState, action) => {
         remainingPoints: state.remainingPoints + 1,
       };
     case "SAVE_CHARACTER":
-      console.log(action.payload);
       return {
         ...state,
         characterName: action.payload,
@@ -47,6 +46,24 @@ const changeStat = (state = initialState, action) => {
         isOver: false,
       };
 
+    case "LOAD_GAME":
+      if (localStorage.getItem("stats") !== null) {
+        const localStats = JSON.parse(localStorage.getItem("stats"));
+        return {
+          ...state,
+          strength: localStats.strength,
+          perception: localStats.perception,
+          endurance: localStats.endurance,
+          charisma: localStats.charisma,
+          intelligence: localStats.intelligence,
+          agility: localStats.agility,
+          luck: localStats.luck,
+        };
+      } else {
+        return {
+          ...state,
+        };
+      }
     default:
       return state;
   }

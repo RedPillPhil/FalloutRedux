@@ -24,9 +24,20 @@ const SpecialInput = ({
   };
 
   const saveName = () => {
-    localStorage.setItem(2, characterName);
+    localStorage.setItem("name", characterName);
+    localStorage.setItem(
+      "stats",
+      JSON.stringify({
+        strength: state.strength,
+        perception: state.perception,
+        endurance: state.endurance,
+        charisma: state.charisma,
+        intelligence: state.intelligence,
+        agility: state.agility,
+        luck: state.luck,
+      })
+    );
     saveStats(characterName);
-    localStorage.setItem("stats", JSON.stringify({ strength: state.strength }));
   };
 
   return (

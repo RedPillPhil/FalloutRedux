@@ -2,33 +2,38 @@ import React, { useEffect, useMemo, useState } from "react";
 import { connect } from "react-redux";
 import setOver from "../../../store/actions/setOver.jsx";
 import unsetOver from "../../../store/actions/unsetOver.jsx";
+import loadGame from "../../../store/actions/loadGame.jsx";
 import head from "../../../pics/head.png";
 import find from "../../../pics/searchicon.png";
 
 import "./Game.scss";
 import PopupWindow from "./PopupWindow/PopupWindow.jsx";
-import Inventory from "./Inventory/Inventory.jsx";
+import Pipboy from "./Pipboy/Pipboy.jsx";
+import RandomEncounter from "./RandomEncounter/RandomEncounter.jsx";
 import { pipboy } from "../../../constants/imageImports.jsx";
 
-const Game = React.memo(({ state, setOver, unsetOver }) => {
+const Game = React.memo(({ state, setOver, unsetOver, loadGame }) => {
   const [positionX, setPositionX] = useState(130);
   const [positionY, setPositionY] = useState(-15);
   const [investigateIsShown, setinvestigateIsShown] = useState(false);
   const [inventoryIsShown, setinventoryIsShown] = useState(false);
+  const [randomEncounter, setRandomEncounter] = useState(false);
 
   useEffect(() => {
     if (localStorage.length >= 2) {
-      setPositionX(JSON.parse(localStorage.getItem(0)));
-      setPositionY(JSON.parse(localStorage.getItem(1)));
+      setPositionX(JSON.parse(localStorage.getItem("x")));
+      setPositionY(JSON.parse(localStorage.getItem("y")));
     } else {
-      localStorage.setItem(0, positionX);
-      localStorage.setItem(1, positionY);
+      localStorage.setItem("x", positionX);
+      localStorage.setItem("y", positionY);
     }
+
+    loadGame();
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(0, positionX);
-    localStorage.setItem(1, positionY);
+    localStorage.setItem("x", positionX);
+    localStorage.setItem("y", positionY);
     if (
       state.quests[0].x - 830 < positionX &&
       state.quests[0].x - 760 > positionX &&
@@ -39,10 +44,21 @@ const Game = React.memo(({ state, setOver, unsetOver }) => {
     } else {
       unsetOver();
     }
+
+    const randomNumber = (Math.random() * 100).toFixed(2);
+
+    if (randomNumber < 5 + 1 && randomNumber > 5 - 1) {
+      setRandomEncounter(true);
+    }
   }, [positionX, positionY]);
 
   const moveCharacter = (e) => {
-    if (investigateIsShown == false) {
+    if (
+      investigateIsShown == false ||
+      inventoryIsShown == false ||
+      randomEncounter == false
+    ) {
+      console.log(investigateIsShown);
       if (e.keyCode === 39 || e.keyCode === 68) {
         setPositionX((prevState) => prevState - 15);
       }
@@ -67,6 +83,8 @@ const Game = React.memo(({ state, setOver, unsetOver }) => {
     [positionX, positionY]
   );
 
+  const blankFunction = () => {};
+
   const toggleWindow = () => {
     setinvestigateIsShown((prevState) => (prevState = !prevState));
     if (!investigateIsShown) {
@@ -79,7 +97,11 @@ const Game = React.memo(({ state, setOver, unsetOver }) => {
   return (
     <main
       className="your-character"
-      onKeyDown={moveCharacterMemo}
+      onKeyDown={
+        investigateIsShown || inventoryIsShown || randomEncounter
+          ? blankFunction
+          : moveCharacterMemo
+      }
       tabIndex="0"
       style={{
         backgroundPositionX: positionX + "px",
@@ -90,7 +112,7 @@ const Game = React.memo(({ state, setOver, unsetOver }) => {
         className="pipboy-button"
         onClick={toggleInventory}
         style={
-          inventoryIsShown || investigateIsShown
+          inventoryIsShown || investigateIsShown || randomEncounter
             ? { display: "none" }
             : { display: "block" }
         }
@@ -98,7 +120,7 @@ const Game = React.memo(({ state, setOver, unsetOver }) => {
         <img src={pipboy} />
       </div>
       {inventoryIsShown ? (
-        <Inventory
+        <Pipboy
           inventoryIsShown={inventoryIsShown}
           toggleInventory={toggleInventory}
         />
@@ -124,7 +146,11 @@ const Game = React.memo(({ state, setOver, unsetOver }) => {
         <button
           className="investigate-button"
           onClick={toggleWindow}
-          style={inventoryIsShown ? { display: "none" } : { display: "block" }}
+          style={
+            inventoryIsShown || randomEncounter
+              ? { display: "none" }
+              : { display: "block" }
+          }
         >
           INVESTIGATE
         </button>
@@ -135,6 +161,7 @@ const Game = React.memo(({ state, setOver, unsetOver }) => {
         investigateIsShown={investigateIsShown}
         toggleWindow={toggleWindow}
       />
+      {randomEncounter ? <RandomEncounter /> : <></>}
     </main>
   );
 });
@@ -152,6 +179,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     unsetOver: () => {
       dispatch(unsetOver());
+    },
+    loadGame: () => {
+      dispatch(loadGame());
     },
   };
 };
