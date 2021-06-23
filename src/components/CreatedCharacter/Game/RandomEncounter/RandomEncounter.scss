@@ -1,6 +1,7 @@
 .random-encounter-window {
     margin: 0 auto;
     display: flex;
+    align-items: center;
     flex-direction: column;
     margin-top: 2%;
     background: rgba(34, 150, 86, 0.7);
@@ -9,6 +10,7 @@
     height: 90vh;
     z-index: 5;
     button {
+        width: 100%;
         color: #fff;
         padding: 5px 10px;
         background-color: rgb(42, 184, 106);

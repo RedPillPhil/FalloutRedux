@@ -12,8 +12,8 @@ const initialState = {
   isOver: false,
   injuries: "None",
   inventory: {
-    steampack: 2,
-    ammo: 200,
+    stimpack: 2,
+    mm5: 200,
   },
 };
 

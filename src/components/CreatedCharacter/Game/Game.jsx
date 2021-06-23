@@ -58,7 +58,6 @@ const Game = React.memo(({ state, setOver, unsetOver, loadGame }) => {
       inventoryIsShown == false ||
       randomEncounter == false
     ) {
-      console.log(investigateIsShown);
       if (e.keyCode === 39 || e.keyCode === 68) {
         setPositionX((prevState) => prevState - 15);
       }
@@ -76,6 +75,10 @@ const Game = React.memo(({ state, setOver, unsetOver, loadGame }) => {
 
   const toggleInventory = () => {
     setinventoryIsShown((prevState) => (prevState = !prevState));
+  };
+
+  const toggleRandomEncounter = () => {
+    setRandomEncounter(false);
   };
 
   const moveCharacterMemo = useMemo(
@@ -161,7 +164,11 @@ const Game = React.memo(({ state, setOver, unsetOver, loadGame }) => {
         investigateIsShown={investigateIsShown}
         toggleWindow={toggleWindow}
       />
-      {randomEncounter ? <RandomEncounter /> : <></>}
+      {randomEncounter ? (
+        <RandomEncounter toggleRandomEncounter={toggleRandomEncounter} />
+      ) : (
+        <></>
+      )}
     </main>
   );
 });
