@@ -5,7 +5,7 @@ import decrementStat from "../store/actions/decrementAction";
 
 const mapStateToProps = (state) => {
   return {
-    stats: state.changeStat,
+    stats: state.characterStats,
   };
 };
 

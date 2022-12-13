@@ -1,0 +1,47 @@
+.character-creation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  padding-top: 32px;
+
+  .character-creation__left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+
+  .character-creation__right-side {
+    width: 50%;
+  }
+
+  .character-creation__name {
+    display: flex;
+    flex-direction: column;
+    color: rgb(26, 255, 128);
+    font-size: 20px;
+    font-family: "Monofonto";
+  }
+
+  .character-creation__vaultboy {
+    padding: 50px;
+    width: 200px;
+  }
+
+  .character-creation__output-wrapper {
+    display: flex;
+    margin-top: 32px;
+
+    .character-creation__output {
+      margin-left: 16px;
+    }
+  }
+
+  .character-creation__remaining-points {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 35px;
+    color: rgb(26, 255, 128);
+  }
+}

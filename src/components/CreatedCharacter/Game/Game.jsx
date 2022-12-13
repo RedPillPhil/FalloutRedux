@@ -45,9 +45,9 @@ const Game = React.memo(({ state, setOver, unsetOver, loadGame }) => {
       unsetOver();
     }
 
-    const randomNumber = (Math.random() * 100).toFixed(2);
+    const randomNumber = Math.round((Math.random() * 100).toFixed(2));
 
-    if (randomNumber < 5 + 1 && randomNumber > 5 - 1) {
+    if (randomNumber === 5) {
       setRandomEncounter(true);
     }
   }, [positionX, positionY]);
@@ -175,7 +175,7 @@ const Game = React.memo(({ state, setOver, unsetOver, loadGame }) => {
 
 const mapStateToProps = (state) => {
   return {
-    state: state.changeStat,
+    state: state.characterStats,
   };
 };
 

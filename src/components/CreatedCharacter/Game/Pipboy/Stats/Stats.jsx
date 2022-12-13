@@ -48,16 +48,16 @@ const Stats = ({ special, injuries }) => {
 const mapStateToProps = (state) => {
   return {
     special: {
-      strength: state.changeStat.strength,
-      perception: state.changeStat.perception,
-      endurance: state.changeStat.endurance,
-      charisma: state.changeStat.charisma,
-      intelligence: state.changeStat.intelligence,
-      agility: state.changeStat.agility,
-      luck: state.changeStat.luck,
+      strength: state.characterStats.strength,
+      perception: state.characterStats.perception,
+      endurance: state.characterStats.endurance,
+      charisma: state.characterStats.charisma,
+      intelligence: state.characterStats.intelligence,
+      agility: state.characterStats.agility,
+      luck: state.characterStats.luck,
     },
-    characterName: state.changeStat.characterName,
-    injuries: state.changeStat.injuries,
+    characterName: state.characterStats.characterName,
+    injuries: state.characterStats.injuries,
   };
 };
 

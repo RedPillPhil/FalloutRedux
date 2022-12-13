@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import "./PopupWindow.scss";
 import questsDescription from "../../../../constants/questsDescription.jsx";
-import loadGame from "../../../../store/actions/loadGame.jsx";
 import getLoot from "../../../../store/actions/getLoot.jsx";
 
 const PopupWindow = ({ investigateIsShown, toggleWindow, state, getLoot }) => {
@@ -28,6 +27,7 @@ const PopupWindow = ({ investigateIsShown, toggleWindow, state, getLoot }) => {
   useEffect(() => {
     mapLoot();
   }, [windowNumber]);
+
   return (
     <main
       className="popup-window"
@@ -84,7 +84,7 @@ const PopupWindow = ({ investigateIsShown, toggleWindow, state, getLoot }) => {
 
 const mapStateToProps = (state) => {
   return {
-    state: state.changeStat,
+    state: state.characterStats,
   };
 };
 

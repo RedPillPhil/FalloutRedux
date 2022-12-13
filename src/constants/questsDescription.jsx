@@ -44,7 +44,7 @@ const questsDescription = {
     4: {
       image: rookhouseinside,
       description:
-        "After about 20 minutes of clearing garbage you found something interesting. At the right corner, under the stairs you found a very interesting hatch. It looks like noone tried to clear that mess before you.",
+        "After about 20 minutes of clearing garbage you found something interesting. At the right corner, under the stairs you found a very interesting hatch. It looks like nobody tried to clear that mess before you.",
       buttons: [
         { name: "BREAK THE LOCK", toWindow: 5, requirements: { strength: 9 } },
         { name: "GO BACK", toWindow: 3 },
@@ -53,7 +53,7 @@ const questsDescription = {
     5: {
       image: rookhousebasement,
       description:
-        "You are witnessing the shocking picture: dead bodies everywhere, chopped, prepared for cooking. You're trying not to throw up just because of the worst smell in the world. This was the smell.",
+        "You are witnessing the shocking picture: dead bodies everywhere, chopped, prepared for cooking. You're trying not to throw up just because of the worst smell in the world.",
       buttons: [
         {
           name: "RUN OUT",

@@ -33,7 +33,7 @@ const Inventory = ({ inventory }) => {
 
 const mapStateToProps = (state) => {
   return {
-    inventory: state.changeStat.inventory,
+    inventory: state.characterStats.inventory,
   };
 };
 

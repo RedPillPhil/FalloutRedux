@@ -25,7 +25,7 @@ const RandomEncounter = ({ agility, toggleRandomEncounter }) => {
 
 const mapStateToProps = (state) => {
   return {
-    agility: state.changeStat.agility,
+    agility: state.characterStats.agility,
   };
 };
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import "./App.css";
-import SingleStatConnected from "../containers/changeSingleStat.jsx";
-import SpecialCreation from "./SpecialCreation/SpecialCreation.jsx";
+import CharacterCreation from "./CharacterCreation/CharacterCreation.jsx";
 import CreatedCharacter from "./CreatedCharacter/CreatedCharacter.jsx";
+
+import "./App.scss";
+import "./reset.css"
 
 const PageNotFound = () => {
   return <div>404</div>;
@@ -18,20 +18,15 @@ const App = () => {
   };
 
   return (
-    <div className="falloutSpecial">
+    <div className="app">
       <Router>
         <Switch>
           <Route
             exact
             path="/"
-            render={() => <SpecialCreation getStatPage={getStatPage} />}
+            render={() => <CharacterCreation getStatPage={getStatPage} />}
           />
           <Route exact path="/character" component={CreatedCharacter} />
-          <Route
-            exact
-            path="/:id"
-            render={() => <SingleStatConnected id={id} />}
-          />
         </Switch>
       </Router>
     </div>

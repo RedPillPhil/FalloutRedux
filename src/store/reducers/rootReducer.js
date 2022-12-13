@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import changeStat from "./changeStat";
+import characterStats from "./characterStats";
 
 const rootReducer = combineReducers({
-  changeStat,
+  characterStats,
 });
 
 export default rootReducer;

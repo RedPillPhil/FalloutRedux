@@ -15,18 +15,18 @@ const Pipboy = ({ toggleInventory }) => {
   };
 
   return (
-    <main className="pipboy-inventory">
-      <div className="top-bar">
-        <button className="top-bar__close-btn" onClick={toggleInventory}>
+    <main className="pipboy">
+      <div className="pipboy__topline">
+        <button className="pipboy__topline-button" onClick={toggleInventory}>
           x
         </button>
       </div>
-      <article className="pipboy">
+      <article className="pipboy__window">
         {statWindowIsShown ? <Stats /> : <Inventory />}
-        <nav className="pipboy-nav">
-          <ul className="pipboy-nav-list">
+        <nav className="pipboy__navigation">
+          <ul className="pipboy__navigation-list">
             <li
-              className="nav-list-item"
+              className="pipboy__navigation-list-item"
               onClick={handleSwitchToStats}
               style={
                 statWindowIsShown
@@ -37,7 +37,7 @@ const Pipboy = ({ toggleInventory }) => {
               STATS
             </li>
             <li
-              className="nav-list-item"
+              className="pipboy__navigation-list-item"
               onClick={handleSwitchToInventory}
               style={
                 !statWindowIsShown

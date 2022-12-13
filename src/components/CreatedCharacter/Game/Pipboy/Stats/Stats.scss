@@ -1,35 +1,30 @@
 .pipboy-stats {
-    display: flex;
-    width: 80%;
-    margin: 0 auto;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-content: flex-end;
-    align-items: center;
-    img {
-        width: 40%;
-        padding-right: 80px;
-    }
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  align-items: center;
+  img {
+    width: 40%;
+    padding-right: 80px;
+  }
 }
 
 .pipboy-nav {
-    border-left: 5px solid rgba(31, 161, 90, 1);
-    width: 20%;
+  border-left: 5px solid rgba(31, 161, 90, 1);
+  width: 20%;
 }
 
 .pipboy-special {
-    display: flex;
-    width: 80%;
-    align-items: center;
+  display: flex;
+  width: 80%;
+  align-items: center;
 }
 
 .special {
-    width: 40%;
-    list-style: none;
-}
-
-.special-item {
-    float: right;
-    margin-right: 25%;
+  width: 40%;
+  list-style: none;
 }

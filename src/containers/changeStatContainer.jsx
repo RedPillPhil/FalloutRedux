@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import SpecialInput from "../components/SpecialCreation/SpecialInput/SpecialInput.jsx";
+import SpecialInput from "../components/CharacterCreation/SpecialInput/SpecialInput.jsx";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.changeStat,
+    state: state.characterStats,
   };
 };
 
