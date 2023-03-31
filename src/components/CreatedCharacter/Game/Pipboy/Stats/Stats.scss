@@ -27,4 +27,14 @@
 .special {
   width: 40%;
   list-style: none;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+  }
+
+  .special-item {
+    width: fit-content;
+  }
 }

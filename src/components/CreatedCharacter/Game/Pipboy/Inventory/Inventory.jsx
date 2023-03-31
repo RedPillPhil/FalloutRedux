@@ -1,40 +1,30 @@
-import React from "react";
-import { connect } from "react-redux";
-import { inventoryPictures } from "../../../../../constants/inventoryImport.jsx";
-import "./Inventory.scss";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { inventoryItems } from '../../../../../constants/inventoryItems.jsx'
+import './Inventory.scss'
 
-const Inventory = ({ inventory }) => {
-  const getObjectProperty = (object, prop) => {
-    return object[prop];
-  };
-
-  const convertedInventory = Object.entries(inventory);
+const Inventory = () => {
+  const inventory = useSelector((state) => state.characterStats.inventory)
+  console.log(inventory)
 
   return (
-    <main className="inventory">
-      {convertedInventory.map((item, index) => {
+    <main className='inventory'>
+      {inventoryItems.map((item, index) => {
         return (
           <div
-            className="inventory-item"
+            className='inventory__item'
             key={index}
             style={{
-              backgroundImage:
-                "url('" + getObjectProperty(inventoryPictures, item[0]) + "')",
+              backgroundImage: "url('" + item.image + "')",
             }}
           >
-            <h3>{item[1]}</h3>
-            <p>{item[0]}</p>
+            <label className='inventory__name'>{item.name}</label>
+            <p className='inventory__amount'>{item.amount}</p>
           </div>
-        );
+        )
       })}
     </main>
-  );
-};
+  )
+}
 
-const mapStateToProps = (state) => {
-  return {
-    inventory: state.characterStats.inventory,
-  };
-};
-
-export default connect(mapStateToProps)(Inventory);
+export default Inventory

@@ -21,7 +21,7 @@
     flex-direction: column;
     color: rgb(26, 255, 128);
     font-size: 20px;
-    font-family: "Monofonto";
+    font-family: 'Monofonto';
   }
 
   .character-creation__vaultboy {
@@ -43,5 +43,20 @@
     justify-content: flex-end;
     font-size: 35px;
     color: rgb(26, 255, 128);
+  }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+
+    .character-creation__left-side {
+      margin: 0 auto;
+      .character-creation__vaultboy {
+        display: none;
+      }
+    }
+
+    .character-creation__right-side {
+      margin: 0 auto;
+    }
   }
 }
